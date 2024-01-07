@@ -25,7 +25,8 @@ We are committed to the continuous development of the gesca R package and plan t
 
 ### Resources
 
-* [https://www.gscapro.com/two-sem-domains]: Quick overview of 
+* [Quick overview of component-based structural equation modeling on the GSCA Pro webpage](https://www.gscapro.com/two-sem-domains)
+* [A list of key references](https://www.gscapro.com/resources)
 
 ### Getting started 
 
@@ -45,4 +46,27 @@ Some quick examples using the main function and the built-in dataset
 
 ```r
 library(gesca)
+data(gesca.rick2)
+
+# Model specification
+myModel <- "
+		# Measurement model 
+		OP =~ cei1 + cei2 + cei3
+		OI =~ ma1 + ma2 + ma3
+		AC_J =~ orgcmt1 + orgcmt2 + orgcmt3
+		AC_L =~ orgcmt5 + orgcmt6 + orgcmt8
+		
+		# Structural model 
+		OI ~ OP
+		AC_J ~ OI
+		AC_L ~ OI
+"
+
+# A single-group analysis
+rick2.GSCA <- gesca.run(myModel, gesca.rick2)
+summary(rick2.GSCA)
+
+# Run a multiple-group GSCA with the grouping variable gender:
+GSCA.group <- gesca.run(myModel, gesca.rick2, group.name = "gender")
+summary(GSCA.group)
 ```
