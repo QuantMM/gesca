@@ -1,6 +1,6 @@
 Package: gesca
 Type: Package
-Title: Generalized structured component analysis structural equation modeling
+Title: Generalized Structured Component Analysis Structural Equation Modeling
 Version: 1.0.5
 Authors@R: c(
     person("Heungsun", "Hwang", , "heungsun.hwang@mcgill.ca", role = "aut",

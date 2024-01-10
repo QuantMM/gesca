@@ -1,3 +1,3 @@
-# gesca 1.0.5
+# Changes in version  1.0.5
 
-* Initial CRAN submission.
+* Fixed an issue preventing gesca from being available on CRAN
