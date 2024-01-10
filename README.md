@@ -39,6 +39,7 @@ If you are just getting started with **gesca**, we recommend starting with [the 
 ```r
 install.packages("gesca")
 ```
+* If you use [Posit Cloud](https://posit.cloud/) (previously RStudio Cloud), you can directly access and use the package via [this link](https://posit.cloud/content/7337666).
 
 ### Examples
 
