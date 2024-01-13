@@ -12,9 +12,10 @@ Authors@R: c(
     person("Taesung", "Park", , "tspark@stats.snu.ac.kr", role = "aut",
            comment = c(ORCID = "0000-0002-8294-590X"))
   )
-Description: Implementing generalized structured component analysis and
+Description: Implementing generalized structured component analysis (GSCA) and
     its basic extensions, including constrained single and multiple group
-    analysis, and second order latent variable modeling.
+    analysis, and second order latent variable modeling. For a comprehensive
+    overview of GSCA, see Hwang & Takane (2014, ISBN: 9780367738754).
 License: GPL (>= 2)
 Encoding: UTF-8
 Language: en-US

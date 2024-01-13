@@ -40,7 +40,7 @@ If you are just getting started with **gesca**, we recommend starting with [the 
 
 ```r
 # install.packages("devtools")
-devtools::install_github("QuantMM/gesca")
+  devtools::install_github("QuantMM/gesca")
 ```
 
 * Install from CRAN:
