@@ -11,7 +11,6 @@ gesca.run(myModel, data, group.name = NULL, group.equal = NULL,
           nbt = 100, itmax = 100, ceps = 1e-5,
           moption = 0, missingvalue = -9999)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{myModel}{
 A simple description of the user-specified model using the gesca model syntax. The model can be described by strings or multiple lines of formulas. See Details and Examples below.
@@ -142,7 +141,7 @@ An object of class \code{gesca.run}, for which a summary method and four functio
 Hwang, H., & Takane, Y. (2014). Generalized structured component analysis: A Component-Based Approach to Structural Equation Modeling (pp.13-126). Boca Raton, FL: Chapman & Hall/CRC Press.
 }
 \examples{
-
+\dontrun{
 library(gesca)
 data(gesca.rick2) # Organizational identification example of Bagozzi
                   # has the grouping variable "gender"
@@ -162,23 +161,23 @@ myModel <- "
 "
 
 # In case the user wants to apply a single-group analysis ignoring the group information:
-# rick2.GSCA <- gesca.run(myModel, gesca.rick2)
+rick2.GSCA <- gesca.run(myModel, gesca.rick2)
 
 # Run a multiple-group GSCA with the grouping variable gender:
-# GSCA.group <- gesca.run(myModel, gesca.rick2, group.name = "gender")
-# summary(GSCA.group)
+GSCA.group <- gesca.run(myModel, gesca.rick2, group.name = "gender")
+summary(GSCA.group)
 GSCA.group.nbt0 <- gesca.run(myModel, gesca.rick2, group.name ="gender", nbt = 0)
 summary(GSCA.group.nbt0)		# no bootstrapped std errors
 effectmeasures(GSCA.group.nbt0)
 
 # Models with the imposition of constraints on parameters across groups
 # (1) equality constraints
-# equl.cstr <- gesca.run(myModel, gesca.rick2, group.name ="gender",
-#                  group.equal = c("loadings", "paths"))
+equl.cstr <- gesca.run(myModel, gesca.rick2, group.name ="gender",
+                        group.equal = c("loadings", "paths"))
 
 # (2) identical loadings but different path coefficients
-# equl.loadings <- gesca.run(myModel, gesca.rick2, group.name ="gender",
-#                      group.equal = c("loadings"))
+equl.loadings <- gesca.run(myModel, gesca.rick2, group.name ="gender",
+                            group.equal = c("loadings"))
 
 # (3) More constraints across groups with some formative indicators
 myModel.con <- "
@@ -211,9 +210,10 @@ myModel5 <- "
 		AC ~ OI
 "
 
-# second.GSCA <- gesca.run(myModel5, gesca.rick2, group.name = "gender")
-# summary(second.GSCA)
+second.GSCA <- gesca.run(myModel5, gesca.rick2, group.name = "gender")
+summary(second.GSCA)
 second.GSCA.nbt0 <- gesca.run(myModel5, gesca.rick2, group.name = "gender", nbt=0)
 summary(second.GSCA.nbt0)
 
+}
 }
