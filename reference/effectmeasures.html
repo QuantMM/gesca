@@ -75,149 +75,55 @@
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://quantmm.github.io/gesca/">gesca</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gesca.rick2</span><span class="op">)</span> <span class="co"># Organizational identification example of Bagozzi</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Model specification</span></span></span>
 <span class="r-in"><span><span class="va">myModel</span> <span class="op">&lt;-</span> <span class="st">"</span></span></span>
-<span class="r-in"><span><span class="st">    # Measurement model </span></span></span>
+<span class="r-in"><span><span class="st">    # Measurement model</span></span></span>
 <span class="r-in"><span><span class="st">    OP =~ cei1 + cei2 + cei3</span></span></span>
 <span class="r-in"><span><span class="st">    OI =~ ma1 + ma2 + ma3</span></span></span>
 <span class="r-in"><span><span class="st">    AC_J =~ orgcmt1 + orgcmt2 + orgcmt3</span></span></span>
 <span class="r-in"><span><span class="st">    AC_L =~ orgcmt5 + orgcmt6 + orgcmt8</span></span></span>
-<span class="r-in"><span><span class="st">    </span></span></span>
-<span class="r-in"><span><span class="st">    # Structural model </span></span></span>
+<span class="r-in"><span><span class="st"></span></span></span>
+<span class="r-in"><span><span class="st">    # Structural model</span></span></span>
 <span class="r-in"><span><span class="st">    OI ~ OP</span></span></span>
 <span class="r-in"><span><span class="st">    AC_J ~ OI</span></span></span>
 <span class="r-in"><span><span class="st">    AC_L ~ OI</span></span></span>
 <span class="r-in"><span><span class="st">"</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Run a multiple-group GSCA with the grouping variable gender:</span></span></span>
-<span class="r-in"><span><span class="co"># GSCA.group &lt;- gesca.run(myModel, gesca.rick2, group.name = "gender")</span></span></span>
-<span class="r-in"><span><span class="co"># summary(GSCA.group)    # default output</span></span></span>
-<span class="r-in"><span><span class="co"># effectmeasures(GSCA.group)  # total and indirect effects per group </span></span></span>
+<span class="r-in"><span><span class="va">GSCA.group</span> <span class="op">&lt;-</span> <span class="fu"><a href="gesca.run.html">gesca.run</a></span><span class="op">(</span><span class="va">myModel</span>, <span class="va">gesca.rick2</span>, group.name <span class="op">=</span> <span class="st">"gender"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">GSCA.group</span><span class="op">)</span>    <span class="co"># default output</span></span></span>
+<span class="r-in"><span><span class="fu">effectmeasures</span><span class="op">(</span><span class="va">GSCA.group</span><span class="op">)</span>  <span class="co"># total and indirect effects per group</span></span></span>
 <span class="r-in"><span><span class="va">GSCA.group.nbt0</span> <span class="op">&lt;-</span> <span class="fu"><a href="gesca.run.html">gesca.run</a></span><span class="op">(</span><span class="va">myModel</span>, <span class="va">gesca.rick2</span>, group.name <span class="op">=</span> <span class="st">"gender"</span>, nbt <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">effectmeasures</span><span class="op">(</span><span class="va">GSCA.group.nbt0</span><span class="op">)</span>  <span class="co"># no bootstrapped standard error of parameters</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Total effects of latent variables:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Group 1 [ gender = 1 ]:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                   OP         OI       AC_J       AC_L</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        OP                                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        OI     0.4092                                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      AC_J     0.2493     0.6091                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      AC_L    -0.1567     -0.383                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Group 2 [ gender = 2 ]:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                   OP         OI       AC_J       AC_L</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        OP                                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        OI     0.3306                                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      AC_J     0.1249     0.3778                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      AC_L    -0.0804    -0.2432                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Indirect effects of latent variables:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Group 1 [ gender = 1 ]:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                   OP         OI       AC_J       AC_L</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        OP                                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        OI                                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      AC_J     0.2493                                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      AC_L    -0.1567                                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Group 2 [ gender = 2 ]:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                   OP         OI       AC_J       AC_L</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        OP                                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        OI                                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      AC_J     0.1249                                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      AC_L    -0.0804                                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Total effects of latent variables on indicators:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Group 1 [ gender = 1 ]:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                   OP         OI       AC_J       AC_L</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      cei1     0.8001                                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      cei2     0.8935                                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      cei3     0.8353                                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       ma1      0.352     0.8601                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       ma2     0.3448     0.8425                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       ma3     0.2987     0.7298                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   orgcmt1     0.2047     0.5001     0.8211           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   orgcmt2     0.1984     0.4848      0.796           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   orgcmt3     0.2161      0.528     0.8669           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   orgcmt5    -0.1303    -0.3184                0.8314</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   orgcmt6    -0.1206    -0.2948                0.7697</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   orgcmt8    -0.1264    -0.3089                0.8065</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Group 2 [ gender = 2 ]:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                   OP         OI       AC_J       AC_L</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      cei1     0.8355                                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      cei2     0.9353                                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      cei3     0.8474                                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       ma1     0.2668      0.807                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       ma2     0.2647     0.8007                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       ma3     0.2462     0.7447                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   orgcmt1     0.0931     0.2816     0.7454           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   orgcmt2     0.1088     0.3293     0.8715           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   orgcmt3     0.0947     0.2866     0.7587           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   orgcmt5      -0.06    -0.1815                0.7464</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   orgcmt6     -0.053    -0.1602                0.6587</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   orgcmt8    -0.0609    -0.1843                0.7579</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Indirect effects of latent variables on indicators:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Group 1 [ gender = 1 ]:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                   OP         OI       AC_J       AC_L</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      cei1                                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      cei2                                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      cei3                                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       ma1      0.352                                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       ma2     0.3448                                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       ma3     0.2987                                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   orgcmt1     0.2047     0.5001                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   orgcmt2     0.1984     0.4848                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   orgcmt3     0.2161      0.528                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   orgcmt5    -0.1303    -0.3184                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   orgcmt6    -0.1206    -0.2948                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   orgcmt8    -0.1264    -0.3089                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Group 2 [ gender = 2 ]:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                   OP         OI       AC_J       AC_L</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      cei1                                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      cei2                                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      cei3                                            </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       ma1     0.2668                                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       ma2     0.2647                                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       ma3     0.2462                                 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   orgcmt1     0.0931     0.2816                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   orgcmt2     0.1088     0.3293                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   orgcmt3     0.0947     0.2866                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   orgcmt5      -0.06    -0.1815                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   orgcmt6     -0.053    -0.1602                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   orgcmt8    -0.0609    -0.1843                      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Second-order latent model with formative indicators</span></span></span>
 <span class="r-in"><span><span class="va">SndForm</span> <span class="op">&lt;-</span> <span class="st">"</span></span></span>
-<span class="r-in"><span><span class="st">    # Measurement model </span></span></span>
+<span class="r-in"><span><span class="st">    # Measurement model</span></span></span>
 <span class="r-in"><span><span class="st">    OP(0) =~ cei1 + cei2 + cei3 + cei4 + cei5 + cei6 + cei7 + cei8</span></span></span>
 <span class="r-in"><span><span class="st">    OI(0) =~ ma1 + ma2 + ma3 + ma4 + ma5 + ma6</span></span></span>
 <span class="r-in"><span><span class="st">    AC_J(0) =~ orgcmt1 + orgcmt2 + orgcmt3 + orgcmt7</span></span></span>
 <span class="r-in"><span><span class="st">    AC_L(0) =~ orgcmt5 + orgcmt6 + orgcmt8</span></span></span>
 <span class="r-in"><span><span class="st"></span></span></span>
-<span class="r-in"><span><span class="st">    # Second-order latents </span></span></span>
+<span class="r-in"><span><span class="st">    # Second-order latents</span></span></span>
 <span class="r-in"><span><span class="st">    AC(0) =: AC_J + AC_L</span></span></span>
 <span class="r-in"><span><span class="st"></span></span></span>
-<span class="r-in"><span><span class="st">    # Structural model </span></span></span>
+<span class="r-in"><span><span class="st">    # Structural model</span></span></span>
 <span class="r-in"><span><span class="st">    OI ~ OP</span></span></span>
 <span class="r-in"><span><span class="st">    AC ~ OI</span></span></span>
 <span class="r-in"><span><span class="st">"</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co"># SndFormFit &lt;- gesca.run(SndForm, gesca.rick2, "gender")</span></span></span>
-<span class="r-in"><span><span class="co"># summary(SndFormFit)</span></span></span>
-<span class="r-in"><span><span class="co"># effectmeasures(SndFormFit)</span></span></span>
+<span class="r-in"><span><span class="va">SndFormFit</span> <span class="op">&lt;-</span> <span class="fu"><a href="gesca.run.html">gesca.run</a></span><span class="op">(</span><span class="va">SndForm</span>, <span class="va">gesca.rick2</span>, <span class="st">"gender"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">SndFormFit</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">effectmeasures</span><span class="op">(</span><span class="va">SndFormFit</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co"># Total/Indirect effects of latent variables on indicators</span></span></span>
 <span class="r-in"><span><span class="co"># will not be provided and instead, be reported as "NULL".</span></span></span>
 <span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

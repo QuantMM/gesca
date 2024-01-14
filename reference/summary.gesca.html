@@ -75,19 +75,19 @@
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
 <span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://quantmm.github.io/gesca/">gesca</a></span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">gesca.rick2</span><span class="op">)</span> <span class="co"># Organizational identification example of Bagozzi</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Model specification</span></span></span>
 <span class="r-in"><span><span class="va">myModel</span> <span class="op">&lt;-</span> <span class="st">"</span></span></span>
-<span class="r-in"><span><span class="st">    # Measurement model </span></span></span>
+<span class="r-in"><span><span class="st">    # Measurement model</span></span></span>
 <span class="r-in"><span><span class="st">    OP =~ cei1 + cei2 + cei3</span></span></span>
 <span class="r-in"><span><span class="st">    OI =~ ma1 + ma2 + ma3</span></span></span>
 <span class="r-in"><span><span class="st">    AC_J =~ orgcmt1 + orgcmt2 + orgcmt3</span></span></span>
 <span class="r-in"><span><span class="st">    AC_L =~ orgcmt5 + orgcmt6 + orgcmt8</span></span></span>
-<span class="r-in"><span><span class="st">    </span></span></span>
-<span class="r-in"><span><span class="st">    # Structural model </span></span></span>
+<span class="r-in"><span><span class="st"></span></span></span>
+<span class="r-in"><span><span class="st">    # Structural model</span></span></span>
 <span class="r-in"><span><span class="st">    OI ~ OP</span></span></span>
 <span class="r-in"><span><span class="st">    AC_J ~ OI</span></span></span>
 <span class="r-in"><span><span class="st">    AC_L ~ OI</span></span></span>
@@ -96,112 +96,8 @@
 <span class="r-in"><span><span class="co"># Run a multiple-group GSCA with the grouping variable gender:</span></span></span>
 <span class="r-in"><span><span class="va">GSCA.group</span> <span class="op">&lt;-</span> <span class="fu"><a href="gesca.run.html">gesca.run</a></span><span class="op">(</span><span class="va">myModel</span>, <span class="va">gesca.rick2</span>, group.name <span class="op">=</span> <span class="st">"gender"</span>, nbt<span class="op">=</span><span class="fl">50</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">GSCA.group</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> The ALS algorithm converged in 8 iterations ( convergence criterion = 1e-05 )</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Number of observations per group [ gender ]</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Group 1 [ gender = 1 ]  157</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Group 2 [ gender = 2 ]  148</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Number of parameters         54 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Number of bootstrap samples  50 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Model fit measures:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   FIT                                  0.5219 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Adjusted FIT (AFIT)                  0.5148 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   GFI                                  0.9856 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Standardized Root Mean Square (SRMR) 0.0737 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   FIT_M                                0.6544 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   FIT_S                                0.1245 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Estimates of Weights:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Group 1 [ gender = 1 ]:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                Estimate     Std.Error      95%CI_LB      95%CI_UB</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      cei1        0.3758        0.0198        0.3322        0.4086</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      cei2        0.4013        0.0367        0.3257        0.4663</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      cei3         0.408         0.037        0.3689        0.5072</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       ma1        0.4425         0.041        0.3592        0.5164</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       ma2        0.4048        0.0393        0.3413        0.4749</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       ma3        0.3815        0.0395        0.2699        0.4464</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   orgcmt1         0.388        0.0227         0.353        0.4342</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   orgcmt2        0.3688         0.027        0.3205        0.4248</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   orgcmt3        0.4475        0.0245        0.3991        0.4958</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   orgcmt5        0.4137        0.0297        0.3468         0.453</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   orgcmt6        0.3977        0.0278        0.3552        0.4594</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   orgcmt8         0.434        0.0324        0.3719        0.4946</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Group 2 [ gender = 2 ]:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                Estimate     Std.Error      95%CI_LB      95%CI_UB</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      cei1        0.3811        0.0204        0.3361        0.4143</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      cei2        0.4222        0.0268        0.3828        0.4799</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      cei3        0.3383        0.0233        0.2988        0.3824</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       ma1        0.4534        0.0455        0.3732        0.5467</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       ma2          0.41        0.0376        0.3363        0.4822</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       ma3        0.4107        0.0397        0.3422        0.4969</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   orgcmt1        0.3789        0.0292        0.3308        0.4277</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   orgcmt2        0.4783        0.0293        0.4333        0.5331</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   orgcmt3        0.3964        0.0301        0.3332        0.4441</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   orgcmt5        0.4779        0.0431        0.3939        0.5538</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   orgcmt6        0.4018        0.0656        0.2165        0.5046</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   orgcmt8        0.4995        0.0449        0.4448        0.5748</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Estimates of Loadings:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Group 1 [ gender = 1 ]:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                Estimate     Std.Error      95%CI_LB      95%CI_UB</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      cei1        0.8001        0.0485        0.7032        0.8661</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      cei2        0.8935        0.0234        0.8319        0.9316</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      cei3        0.8353         0.032        0.7693        0.8952</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       ma1        0.8601        0.0286        0.7983        0.9104</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       ma2        0.8425        0.0312        0.7763        0.8929</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       ma3        0.7298        0.0574        0.5962        0.8076</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   orgcmt1        0.8211        0.0325          0.75        0.8757</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   orgcmt2         0.796        0.0328        0.7212        0.8445</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   orgcmt3        0.8669        0.0203        0.8283        0.8963</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   orgcmt5        0.8314        0.0412        0.7142        0.8895</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   orgcmt6        0.7697        0.0492        0.6638        0.8548</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   orgcmt8        0.8065        0.0336        0.7381        0.8564</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Group 2 [ gender = 2 ]:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                Estimate     Std.Error      95%CI_LB      95%CI_UB</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      cei1        0.8355        0.0346        0.7774        0.8901</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      cei2        0.9353        0.0121        0.9146        0.9534</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      cei3        0.8474        0.0275        0.7871        0.8805</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       ma1        0.8069        0.0349        0.7479        0.8677</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       ma2        0.8007         0.037        0.7153        0.8807</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       ma3        0.7448        0.0585        0.5671        0.8243</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   orgcmt1        0.7453        0.0433        0.6494        0.8145</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   orgcmt2        0.8715        0.0218        0.8256        0.9117</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   orgcmt3        0.7588        0.0461        0.6511        0.8287</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   orgcmt5        0.7463        0.0504        0.6411        0.8369</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   orgcmt6         0.659        0.0978        0.3637        0.7719</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   orgcmt8        0.7577        0.0569         0.638        0.8436</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Estimates of Path Coefficients:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Group 1 [ gender = 1 ]:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                 Estimate     Std.Error      95%CI_LB      95%CI_UB</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      OI~OP        0.4092        0.0973        0.2248         0.581</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    AC_J~OI        0.6091        0.0726        0.4777         0.725</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    AC_L~OI        -0.383        0.0964       -0.5344       -0.1857</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   Group 2 [ gender = 2 ]:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                 Estimate     Std.Error      95%CI_LB      95%CI_UB</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      OI~OP        0.3306        0.0891        0.1414        0.4615</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    AC_J~OI        0.3778        0.0682        0.2596        0.5154</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    AC_L~OI       -0.2432        0.0825       -0.4157       -0.1211</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> R-squared Values of Endogenous Latent Variables:</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             Group 1      Group 2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     OP            0            0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>     OI       0.1675       0.1093</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   AC_J        0.371       0.1427</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   AC_L       0.1467       0.0592</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
