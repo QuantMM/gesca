@@ -272,9 +272,9 @@ gsca.mg.ho2 <- function (z0, group_var, W001, W002, C00, B00,
 
 			if ( it <= itmax ) {
 				if ( imp <= ceps ) {
-				  message("The ALS algorithm converged in", it, "iterations (convergence criterion =", ceps, ")", "\n")
+				  cat("The ALS algorithm converged in", it, "iterations (convergence criterion =", ceps, ")", "\n")
 				} else {
-				  message("The ALS algorithm failed to converge in", it, "iterations (convergence criterion =", ceps, ")", "\n")
+				  cat("The ALS algorithm failed to converge in", it, "iterations (convergence criterion =", ceps, ")", "\n")
 				}
 			}
 
